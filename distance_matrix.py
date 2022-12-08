@@ -7,8 +7,11 @@ def distancematrix(df):
     apicall = ""
     for i in df.index:
         apicall += ";"+str(df['Y'][i])+","+str(df['X'][i])
-
+    
     apicall = apicall[1:]
+    
+    # This url is for the online api, but during this project i used
+    # locally hosted instance of OSRM 
     matrixurl = 'http://router.project-osrm.org/table/v1/driving/'+apicall+'?annotations=duration,distance'
 
     r = requests.get(matrixurl)
